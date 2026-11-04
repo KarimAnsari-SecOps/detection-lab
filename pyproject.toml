@@ -1,0 +1,20 @@
+[project]
+name = "detection-lab"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "KarimAnsari-SecOps", email = "337925769+KarimAnsari-SecOps@users.noreply.github.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "pysigma>=1.5.1",
+    "pysigma-backend-elasticsearch>=2.1.1",
+]
+
+[project.scripts]
+detection-lab = "detection_lab:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
