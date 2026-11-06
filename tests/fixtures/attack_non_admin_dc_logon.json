@@ -1,0 +1,657 @@
+[
+  {
+    "agent": {
+      "name": "WIN-74V8QGMQ52I",
+      "id": "1ca2ae27-14b4-4b57-9041-61569ed7c092",
+      "ephemeral_id": "61df99fe-1861-4cf3-a50f-b944d0c667e2",
+      "type": "filebeat",
+      "version": "8.17.10"
+    },
+    "process": {
+      "pid": 0
+    },
+    "winlog": {
+      "computer_name": "WIN-74V8QGMQ52I.lab.local",
+      "process": {
+        "pid": 672,
+        "thread": {
+          "id": 2340
+        }
+      },
+      "keywords": [
+        "Audit Success"
+      ],
+      "logon": {
+        "id": "0x0",
+        "type": "Network"
+      },
+      "channel": "Security",
+      "event_data": {
+        "LogonGuid": "{fe457b49-e326-9abf-5fbc-82152103cfbf}",
+        "VirtualAccount": "%%1843",
+        "ElevatedToken": "%%1842",
+        "LogonProcessName": "Kerberos",
+        "TargetDomainName": "LAB.LOCAL",
+        "LogonType": "3",
+        "SubjectLogonId": "0x0",
+        "KeyLength": "0",
+        "TargetLogonId": "0x7e0e5f",
+        "TargetLinkedLogonId": "0x0",
+        "ImpersonationLevel": "%%1833",
+        "TargetUserName": "noob.two",
+        "SubjectUserSid": "S-1-0-0",
+        "TargetUserSid": "S-1-5-21-1423407425-4063410772-1333896927-1104",
+        "AuthenticationPackageName": "Kerberos"
+      },
+      "opcode": "Info",
+      "version": 2,
+      "record_id": "16940",
+      "task": "Logon",
+      "event_id": "4624",
+      "provider_guid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "api": "wineventlog",
+      "provider_name": "Microsoft-Windows-Security-Auditing"
+    },
+    "log": {
+      "level": "information"
+    },
+    "elastic_agent": {
+      "id": "1ca2ae27-14b4-4b57-9041-61569ed7c092",
+      "version": "8.17.10",
+      "snapshot": false
+    },
+    "source": {
+      "port": 54573,
+      "ip": "10.10.10.102"
+    },
+    "message": "An account was successfully logged on.\n\nSubject:\n\tSecurity ID:\t\tS-1-0-0\n\tAccount Name:\t\t-\n\tAccount Domain:\t\t-\n\tLogon ID:\t\t0x0\n\nLogon Information:\n\tLogon Type:\t\t3\n\tRestricted Admin Mode:\t-\n\tVirtual Account:\t\tNo\n\tElevated Token:\t\tYes\n\nImpersonation Level:\t\tImpersonation\n\nNew Logon:\n\tSecurity ID:\t\tS-1-5-21-1423407425-4063410772-1333896927-1104\n\tAccount Name:\t\tnoob.two\n\tAccount Domain:\t\tLAB.LOCAL\n\tLogon ID:\t\t0x7E0E5F\n\tLinked Logon ID:\t\t0x0\n\tNetwork Account Name:\t-\n\tNetwork Account Domain:\t-\n\tLogon GUID:\t\t{fe457b49-e326-9abf-5fbc-82152103cfbf}\n\nProcess Information:\n\tProcess ID:\t\t0x0\n\tProcess Name:\t\t-\n\nNetwork Information:\n\tWorkstation Name:\t-\n\tSource Network Address:\t10.10.10.102\n\tSource Port:\t\t54573\n\nDetailed Authentication Information:\n\tLogon Process:\t\tKerberos\n\tAuthentication Package:\tKerberos\n\tTransited Services:\t-\n\tPackage Name (NTLM only):\t-\n\tKey Length:\t\t0\n\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\n\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\n\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\n\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\n\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\n\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\n\nThe authentication information fields provide detailed information about this specific logon request.\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\n\t- Transited services indicate which intermediate services have participated in this logon request.\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.",
+    "input": {
+      "type": "winlog"
+    },
+    "@timestamp": "2026-11-06T05:29:04.003Z",
+    "ecs": {
+      "version": "8.11.0"
+    },
+    "related": {
+      "ip": [
+        "10.10.10.102"
+      ],
+      "user": [
+        "noob.two"
+      ]
+    },
+    "data_stream": {
+      "namespace": "default",
+      "type": "logs",
+      "dataset": "system.security"
+    },
+    "host": {
+      "hostname": "WIN-74V8QGMQ52I",
+      "os": {
+        "build": "20348.587",
+        "kernel": "10.0.20348.587 (WinBuild.160101.0800)",
+        "name": "Windows Server 2022 Standard Evaluation",
+        "type": "windows",
+        "family": "windows",
+        "version": "10.0",
+        "platform": "windows"
+      },
+      "ip": [
+        "fe80::b128:cfbd:ccac:205e",
+        "10.10.10.10"
+      ],
+      "name": "win-74v8qgmq52i",
+      "id": "ee45b059-6db6-4abe-995a-e1f3a6c439ba",
+      "mac": [
+        "00-0C-29-44-11-63"
+      ],
+      "architecture": "x86_64"
+    },
+    "event": {
+      "agent_id_status": "verified",
+      "ingested": "2026-11-06T05:29:14Z",
+      "code": "4624",
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "created": "2026-11-06T05:29:05.362Z",
+      "kind": "event",
+      "action": "logged-in",
+      "category": [
+        "authentication"
+      ],
+      "type": [
+        "start"
+      ],
+      "dataset": "system.security",
+      "outcome": "success"
+    },
+    "user": {
+      "domain": "LAB.LOCAL",
+      "name": "noob.two",
+      "id": "S-1-5-21-1423407425-4063410772-1333896927-1104"
+    }
+  },
+  {
+    "agent": {
+      "name": "WIN-74V8QGMQ52I",
+      "id": "1ca2ae27-14b4-4b57-9041-61569ed7c092",
+      "ephemeral_id": "61df99fe-1861-4cf3-a50f-b944d0c667e2",
+      "type": "filebeat",
+      "version": "8.17.10"
+    },
+    "process": {
+      "pid": 0
+    },
+    "winlog": {
+      "computer_name": "WIN-74V8QGMQ52I.lab.local",
+      "process": {
+        "pid": 672,
+        "thread": {
+          "id": 2180
+        }
+      },
+      "keywords": [
+        "Audit Success"
+      ],
+      "logon": {
+        "id": "0x0",
+        "type": "Network"
+      },
+      "channel": "Security",
+      "event_data": {
+        "LogonGuid": "{fe457b49-e326-9abf-5fbc-82152103cfbf}",
+        "VirtualAccount": "%%1843",
+        "ElevatedToken": "%%1842",
+        "LogonProcessName": "Kerberos",
+        "TargetDomainName": "LAB.LOCAL",
+        "LogonType": "3",
+        "SubjectLogonId": "0x0",
+        "KeyLength": "0",
+        "TargetLogonId": "0x7e0e0d",
+        "TargetLinkedLogonId": "0x0",
+        "TargetUserName": "noob.two",
+        "ImpersonationLevel": "%%1833",
+        "SubjectUserSid": "S-1-0-0",
+        "AuthenticationPackageName": "Kerberos",
+        "TargetUserSid": "S-1-5-21-1423407425-4063410772-1333896927-1104"
+      },
+      "opcode": "Info",
+      "version": 2,
+      "record_id": "16937",
+      "event_id": "4624",
+      "task": "Logon",
+      "provider_guid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "api": "wineventlog",
+      "provider_name": "Microsoft-Windows-Security-Auditing"
+    },
+    "log": {
+      "level": "information"
+    },
+    "elastic_agent": {
+      "id": "1ca2ae27-14b4-4b57-9041-61569ed7c092",
+      "version": "8.17.10",
+      "snapshot": false
+    },
+    "source": {
+      "port": 54570,
+      "ip": "10.10.10.102"
+    },
+    "message": "An account was successfully logged on.\n\nSubject:\n\tSecurity ID:\t\tS-1-0-0\n\tAccount Name:\t\t-\n\tAccount Domain:\t\t-\n\tLogon ID:\t\t0x0\n\nLogon Information:\n\tLogon Type:\t\t3\n\tRestricted Admin Mode:\t-\n\tVirtual Account:\t\tNo\n\tElevated Token:\t\tYes\n\nImpersonation Level:\t\tImpersonation\n\nNew Logon:\n\tSecurity ID:\t\tS-1-5-21-1423407425-4063410772-1333896927-1104\n\tAccount Name:\t\tnoob.two\n\tAccount Domain:\t\tLAB.LOCAL\n\tLogon ID:\t\t0x7E0E0D\n\tLinked Logon ID:\t\t0x0\n\tNetwork Account Name:\t-\n\tNetwork Account Domain:\t-\n\tLogon GUID:\t\t{fe457b49-e326-9abf-5fbc-82152103cfbf}\n\nProcess Information:\n\tProcess ID:\t\t0x0\n\tProcess Name:\t\t-\n\nNetwork Information:\n\tWorkstation Name:\t-\n\tSource Network Address:\t10.10.10.102\n\tSource Port:\t\t54570\n\nDetailed Authentication Information:\n\tLogon Process:\t\tKerberos\n\tAuthentication Package:\tKerberos\n\tTransited Services:\t-\n\tPackage Name (NTLM only):\t-\n\tKey Length:\t\t0\n\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\n\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\n\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\n\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\n\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\n\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\n\nThe authentication information fields provide detailed information about this specific logon request.\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\n\t- Transited services indicate which intermediate services have participated in this logon request.\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.",
+    "input": {
+      "type": "winlog"
+    },
+    "@timestamp": "2026-11-06T05:29:03.858Z",
+    "ecs": {
+      "version": "8.11.0"
+    },
+    "related": {
+      "ip": [
+        "10.10.10.102"
+      ],
+      "user": [
+        "noob.two"
+      ]
+    },
+    "data_stream": {
+      "namespace": "default",
+      "type": "logs",
+      "dataset": "system.security"
+    },
+    "host": {
+      "hostname": "WIN-74V8QGMQ52I",
+      "os": {
+        "build": "20348.587",
+        "kernel": "10.0.20348.587 (WinBuild.160101.0800)",
+        "name": "Windows Server 2022 Standard Evaluation",
+        "family": "windows",
+        "type": "windows",
+        "version": "10.0",
+        "platform": "windows"
+      },
+      "ip": [
+        "fe80::b128:cfbd:ccac:205e",
+        "10.10.10.10"
+      ],
+      "name": "win-74v8qgmq52i",
+      "id": "ee45b059-6db6-4abe-995a-e1f3a6c439ba",
+      "mac": [
+        "00-0C-29-44-11-63"
+      ],
+      "architecture": "x86_64"
+    },
+    "event": {
+      "agent_id_status": "verified",
+      "ingested": "2026-11-06T05:29:14Z",
+      "code": "4624",
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "created": "2026-11-06T05:29:05.362Z",
+      "kind": "event",
+      "action": "logged-in",
+      "category": [
+        "authentication"
+      ],
+      "type": [
+        "start"
+      ],
+      "dataset": "system.security",
+      "outcome": "success"
+    },
+    "user": {
+      "domain": "LAB.LOCAL",
+      "name": "noob.two",
+      "id": "S-1-5-21-1423407425-4063410772-1333896927-1104"
+    }
+  },
+  {
+    "agent": {
+      "name": "WIN-74V8QGMQ52I",
+      "id": "1ca2ae27-14b4-4b57-9041-61569ed7c092",
+      "type": "filebeat",
+      "ephemeral_id": "61df99fe-1861-4cf3-a50f-b944d0c667e2",
+      "version": "8.17.10"
+    },
+    "process": {
+      "pid": 0
+    },
+    "winlog": {
+      "computer_name": "WIN-74V8QGMQ52I.lab.local",
+      "process": {
+        "pid": 672,
+        "thread": {
+          "id": 6112
+        }
+      },
+      "keywords": [
+        "Audit Success"
+      ],
+      "logon": {
+        "id": "0x0",
+        "type": "Network"
+      },
+      "channel": "Security",
+      "event_data": {
+        "LogonGuid": "{fe457b49-e326-9abf-5fbc-82152103cfbf}",
+        "VirtualAccount": "%%1843",
+        "ElevatedToken": "%%1842",
+        "TargetDomainName": "LAB.LOCAL",
+        "LogonProcessName": "Kerberos",
+        "LogonType": "3",
+        "SubjectLogonId": "0x0",
+        "KeyLength": "0",
+        "TargetLogonId": "0x77837d",
+        "TargetLinkedLogonId": "0x0",
+        "TargetUserName": "noob.two",
+        "ImpersonationLevel": "%%1833",
+        "SubjectUserSid": "S-1-0-0",
+        "TargetUserSid": "S-1-5-21-1423407425-4063410772-1333896927-1104",
+        "AuthenticationPackageName": "Kerberos"
+      },
+      "opcode": "Info",
+      "version": 2,
+      "record_id": "16686",
+      "event_id": "4624",
+      "task": "Logon",
+      "provider_guid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "api": "wineventlog",
+      "provider_name": "Microsoft-Windows-Security-Auditing"
+    },
+    "log": {
+      "level": "information"
+    },
+    "elastic_agent": {
+      "id": "1ca2ae27-14b4-4b57-9041-61569ed7c092",
+      "version": "8.17.10",
+      "snapshot": false
+    },
+    "source": {
+      "port": 54346,
+      "ip": "10.10.10.102"
+    },
+    "message": "An account was successfully logged on.\n\nSubject:\n\tSecurity ID:\t\tS-1-0-0\n\tAccount Name:\t\t-\n\tAccount Domain:\t\t-\n\tLogon ID:\t\t0x0\n\nLogon Information:\n\tLogon Type:\t\t3\n\tRestricted Admin Mode:\t-\n\tVirtual Account:\t\tNo\n\tElevated Token:\t\tYes\n\nImpersonation Level:\t\tImpersonation\n\nNew Logon:\n\tSecurity ID:\t\tS-1-5-21-1423407425-4063410772-1333896927-1104\n\tAccount Name:\t\tnoob.two\n\tAccount Domain:\t\tLAB.LOCAL\n\tLogon ID:\t\t0x77837D\n\tLinked Logon ID:\t\t0x0\n\tNetwork Account Name:\t-\n\tNetwork Account Domain:\t-\n\tLogon GUID:\t\t{fe457b49-e326-9abf-5fbc-82152103cfbf}\n\nProcess Information:\n\tProcess ID:\t\t0x0\n\tProcess Name:\t\t-\n\nNetwork Information:\n\tWorkstation Name:\t-\n\tSource Network Address:\t10.10.10.102\n\tSource Port:\t\t54346\n\nDetailed Authentication Information:\n\tLogon Process:\t\tKerberos\n\tAuthentication Package:\tKerberos\n\tTransited Services:\t-\n\tPackage Name (NTLM only):\t-\n\tKey Length:\t\t0\n\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\n\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\n\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\n\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\n\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\n\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\n\nThe authentication information fields provide detailed information about this specific logon request.\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\n\t- Transited services indicate which intermediate services have participated in this logon request.\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.",
+    "input": {
+      "type": "winlog"
+    },
+    "@timestamp": "2026-11-06T05:01:23.318Z",
+    "ecs": {
+      "version": "8.11.0"
+    },
+    "related": {
+      "ip": [
+        "10.10.10.102"
+      ],
+      "user": [
+        "noob.two"
+      ]
+    },
+    "data_stream": {
+      "namespace": "default",
+      "type": "logs",
+      "dataset": "system.security"
+    },
+    "host": {
+      "hostname": "WIN-74V8QGMQ52I",
+      "os": {
+        "build": "20348.587",
+        "kernel": "10.0.20348.587 (WinBuild.160101.0800)",
+        "name": "Windows Server 2022 Standard Evaluation",
+        "family": "windows",
+        "type": "windows",
+        "version": "10.0",
+        "platform": "windows"
+      },
+      "ip": [
+        "fe80::b128:cfbd:ccac:205e",
+        "10.10.10.10"
+      ],
+      "name": "win-74v8qgmq52i",
+      "id": "ee45b059-6db6-4abe-995a-e1f3a6c439ba",
+      "mac": [
+        "00-0C-29-44-11-63"
+      ],
+      "architecture": "x86_64"
+    },
+    "event": {
+      "agent_id_status": "verified",
+      "ingested": "2026-11-06T05:01:33Z",
+      "code": "4624",
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "kind": "event",
+      "created": "2026-11-06T05:01:24.847Z",
+      "action": "logged-in",
+      "category": [
+        "authentication"
+      ],
+      "type": [
+        "start"
+      ],
+      "dataset": "system.security",
+      "outcome": "success"
+    },
+    "user": {
+      "domain": "LAB.LOCAL",
+      "name": "noob.two",
+      "id": "S-1-5-21-1423407425-4063410772-1333896927-1104"
+    }
+  },
+  {
+    "agent": {
+      "name": "WIN-74V8QGMQ52I",
+      "id": "1ca2ae27-14b4-4b57-9041-61569ed7c092",
+      "type": "filebeat",
+      "ephemeral_id": "61df99fe-1861-4cf3-a50f-b944d0c667e2",
+      "version": "8.17.10"
+    },
+    "process": {
+      "pid": 0
+    },
+    "winlog": {
+      "computer_name": "WIN-74V8QGMQ52I.lab.local",
+      "process": {
+        "pid": 672,
+        "thread": {
+          "id": 5684
+        }
+      },
+      "keywords": [
+        "Audit Success"
+      ],
+      "logon": {
+        "id": "0x0",
+        "type": "Network"
+      },
+      "channel": "Security",
+      "event_data": {
+        "LogonGuid": "{fe457b49-e326-9abf-5fbc-82152103cfbf}",
+        "VirtualAccount": "%%1843",
+        "ElevatedToken": "%%1842",
+        "TargetDomainName": "LAB.LOCAL",
+        "LogonProcessName": "Kerberos",
+        "LogonType": "3",
+        "SubjectLogonId": "0x0",
+        "KeyLength": "0",
+        "TargetLogonId": "0x6ea15d",
+        "TargetLinkedLogonId": "0x0",
+        "ImpersonationLevel": "%%1833",
+        "TargetUserName": "noob.two",
+        "SubjectUserSid": "S-1-0-0",
+        "AuthenticationPackageName": "Kerberos",
+        "TargetUserSid": "S-1-5-21-1423407425-4063410772-1333896927-1104"
+      },
+      "opcode": "Info",
+      "version": 2,
+      "record_id": "16377",
+      "event_id": "4624",
+      "task": "Logon",
+      "provider_guid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "api": "wineventlog",
+      "provider_name": "Microsoft-Windows-Security-Auditing"
+    },
+    "log": {
+      "level": "information"
+    },
+    "elastic_agent": {
+      "id": "1ca2ae27-14b4-4b57-9041-61569ed7c092",
+      "version": "8.17.10",
+      "snapshot": false
+    },
+    "source": {
+      "port": 54054,
+      "ip": "10.10.10.102"
+    },
+    "message": "An account was successfully logged on.\n\nSubject:\n\tSecurity ID:\t\tS-1-0-0\n\tAccount Name:\t\t-\n\tAccount Domain:\t\t-\n\tLogon ID:\t\t0x0\n\nLogon Information:\n\tLogon Type:\t\t3\n\tRestricted Admin Mode:\t-\n\tVirtual Account:\t\tNo\n\tElevated Token:\t\tYes\n\nImpersonation Level:\t\tImpersonation\n\nNew Logon:\n\tSecurity ID:\t\tS-1-5-21-1423407425-4063410772-1333896927-1104\n\tAccount Name:\t\tnoob.two\n\tAccount Domain:\t\tLAB.LOCAL\n\tLogon ID:\t\t0x6EA15D\n\tLinked Logon ID:\t\t0x0\n\tNetwork Account Name:\t-\n\tNetwork Account Domain:\t-\n\tLogon GUID:\t\t{fe457b49-e326-9abf-5fbc-82152103cfbf}\n\nProcess Information:\n\tProcess ID:\t\t0x0\n\tProcess Name:\t\t-\n\nNetwork Information:\n\tWorkstation Name:\t-\n\tSource Network Address:\t10.10.10.102\n\tSource Port:\t\t54054\n\nDetailed Authentication Information:\n\tLogon Process:\t\tKerberos\n\tAuthentication Package:\tKerberos\n\tTransited Services:\t-\n\tPackage Name (NTLM only):\t-\n\tKey Length:\t\t0\n\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\n\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\n\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\n\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\n\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\n\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\n\nThe authentication information fields provide detailed information about this specific logon request.\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\n\t- Transited services indicate which intermediate services have participated in this logon request.\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.",
+    "input": {
+      "type": "winlog"
+    },
+    "@timestamp": "2026-11-06T04:26:26.741Z",
+    "ecs": {
+      "version": "8.11.0"
+    },
+    "related": {
+      "ip": [
+        "10.10.10.102"
+      ],
+      "user": [
+        "noob.two"
+      ]
+    },
+    "data_stream": {
+      "namespace": "default",
+      "type": "logs",
+      "dataset": "system.security"
+    },
+    "host": {
+      "hostname": "WIN-74V8QGMQ52I",
+      "os": {
+        "build": "20348.587",
+        "kernel": "10.0.20348.587 (WinBuild.160101.0800)",
+        "name": "Windows Server 2022 Standard Evaluation",
+        "type": "windows",
+        "family": "windows",
+        "version": "10.0",
+        "platform": "windows"
+      },
+      "ip": [
+        "fe80::b128:cfbd:ccac:205e",
+        "10.10.10.10"
+      ],
+      "name": "win-74v8qgmq52i",
+      "id": "ee45b059-6db6-4abe-995a-e1f3a6c439ba",
+      "mac": [
+        "00-0C-29-44-11-63"
+      ],
+      "architecture": "x86_64"
+    },
+    "event": {
+      "agent_id_status": "verified",
+      "ingested": "2026-11-06T04:26:27Z",
+      "code": "4624",
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "kind": "event",
+      "created": "2026-11-06T04:26:28.010Z",
+      "action": "logged-in",
+      "category": [
+        "authentication"
+      ],
+      "type": [
+        "start"
+      ],
+      "dataset": "system.security",
+      "outcome": "success"
+    },
+    "user": {
+      "domain": "LAB.LOCAL",
+      "name": "noob.two",
+      "id": "S-1-5-21-1423407425-4063410772-1333896927-1104"
+    }
+  },
+  {
+    "agent": {
+      "name": "WIN-74V8QGMQ52I",
+      "id": "1ca2ae27-14b4-4b57-9041-61569ed7c092",
+      "type": "filebeat",
+      "ephemeral_id": "61df99fe-1861-4cf3-a50f-b944d0c667e2",
+      "version": "8.17.10"
+    },
+    "process": {
+      "pid": 0
+    },
+    "winlog": {
+      "computer_name": "WIN-74V8QGMQ52I.lab.local",
+      "process": {
+        "pid": 672,
+        "thread": {
+          "id": 2336
+        }
+      },
+      "keywords": [
+        "Audit Success"
+      ],
+      "logon": {
+        "id": "0x0",
+        "type": "Network"
+      },
+      "channel": "Security",
+      "event_data": {
+        "LogonGuid": "{fe457b49-e326-9abf-5fbc-82152103cfbf}",
+        "VirtualAccount": "%%1843",
+        "ElevatedToken": "%%1842",
+        "TargetDomainName": "LAB.LOCAL",
+        "LogonProcessName": "Kerberos",
+        "LogonType": "3",
+        "SubjectLogonId": "0x0",
+        "KeyLength": "0",
+        "TargetLogonId": "0x64d25f",
+        "TargetLinkedLogonId": "0x0",
+        "ImpersonationLevel": "%%1833",
+        "TargetUserName": "noob.two",
+        "SubjectUserSid": "S-1-0-0",
+        "TargetUserSid": "S-1-5-21-1423407425-4063410772-1333896927-1104",
+        "AuthenticationPackageName": "Kerberos"
+      },
+      "opcode": "Info",
+      "version": 2,
+      "record_id": "16005",
+      "event_id": "4624",
+      "task": "Logon",
+      "provider_guid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "api": "wineventlog",
+      "provider_name": "Microsoft-Windows-Security-Auditing"
+    },
+    "log": {
+      "level": "information"
+    },
+    "elastic_agent": {
+      "id": "1ca2ae27-14b4-4b57-9041-61569ed7c092",
+      "version": "8.17.10",
+      "snapshot": false
+    },
+    "source": {
+      "port": 53742,
+      "ip": "10.10.10.102"
+    },
+    "message": "An account was successfully logged on.\n\nSubject:\n\tSecurity ID:\t\tS-1-0-0\n\tAccount Name:\t\t-\n\tAccount Domain:\t\t-\n\tLogon ID:\t\t0x0\n\nLogon Information:\n\tLogon Type:\t\t3\n\tRestricted Admin Mode:\t-\n\tVirtual Account:\t\tNo\n\tElevated Token:\t\tYes\n\nImpersonation Level:\t\tImpersonation\n\nNew Logon:\n\tSecurity ID:\t\tS-1-5-21-1423407425-4063410772-1333896927-1104\n\tAccount Name:\t\tnoob.two\n\tAccount Domain:\t\tLAB.LOCAL\n\tLogon ID:\t\t0x64D25F\n\tLinked Logon ID:\t\t0x0\n\tNetwork Account Name:\t-\n\tNetwork Account Domain:\t-\n\tLogon GUID:\t\t{fe457b49-e326-9abf-5fbc-82152103cfbf}\n\nProcess Information:\n\tProcess ID:\t\t0x0\n\tProcess Name:\t\t-\n\nNetwork Information:\n\tWorkstation Name:\t-\n\tSource Network Address:\t10.10.10.102\n\tSource Port:\t\t53742\n\nDetailed Authentication Information:\n\tLogon Process:\t\tKerberos\n\tAuthentication Package:\tKerberos\n\tTransited Services:\t-\n\tPackage Name (NTLM only):\t-\n\tKey Length:\t\t0\n\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\n\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\n\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\n\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\n\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\n\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\n\nThe authentication information fields provide detailed information about this specific logon request.\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\n\t- Transited services indicate which intermediate services have participated in this logon request.\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.",
+    "input": {
+      "type": "winlog"
+    },
+    "@timestamp": "2026-11-06T03:48:03.746Z",
+    "ecs": {
+      "version": "8.11.0"
+    },
+    "related": {
+      "ip": [
+        "10.10.10.102"
+      ],
+      "user": [
+        "noob.two"
+      ]
+    },
+    "data_stream": {
+      "namespace": "default",
+      "type": "logs",
+      "dataset": "system.security"
+    },
+    "host": {
+      "hostname": "WIN-74V8QGMQ52I",
+      "os": {
+        "build": "20348.587",
+        "kernel": "10.0.20348.587 (WinBuild.160101.0800)",
+        "name": "Windows Server 2022 Standard Evaluation",
+        "family": "windows",
+        "type": "windows",
+        "version": "10.0",
+        "platform": "windows"
+      },
+      "ip": [
+        "fe80::b128:cfbd:ccac:205e",
+        "10.10.10.10"
+      ],
+      "name": "win-74v8qgmq52i",
+      "id": "ee45b059-6db6-4abe-995a-e1f3a6c439ba",
+      "mac": [
+        "00-0C-29-44-11-63"
+      ],
+      "architecture": "x86_64"
+    },
+    "event": {
+      "agent_id_status": "verified",
+      "ingested": "2026-11-06T03:48:16Z",
+      "code": "4624",
+      "provider": "Microsoft-Windows-Security-Auditing",
+      "kind": "event",
+      "created": "2026-11-06T03:48:05.138Z",
+      "action": "logged-in",
+      "category": [
+        "authentication"
+      ],
+      "type": [
+        "start"
+      ],
+      "dataset": "system.security",
+      "outcome": "success"
+    },
+    "user": {
+      "domain": "LAB.LOCAL",
+      "name": "noob.two",
+      "id": "S-1-5-21-1423407425-4063410772-1333896927-1104"
+    }
+  }
+]
