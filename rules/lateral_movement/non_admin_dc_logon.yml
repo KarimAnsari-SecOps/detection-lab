@@ -1,0 +1,36 @@
+title: Non-Admin User Network Logon to Domain Controller
+id: 3f2a1c4e-8b7d-4e1a-9c6f-2d5b8a7e1f03
+status: experimental
+description: |
+  Detects a network logon (type 3) to a domain controller by an account that is
+  not a known administrator or service account. Ordinary users have no business
+  authenticating directly to a DC; this often indicates lateral movement or use
+  of stolen credentials.
+author: Karim Ansari
+date: 2026-11-05
+references:
+  - https://attack.mitre.org/techniques/T1021/
+tags:
+  - attack.lateral_movement
+  - attack.t1021
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4624
+    LogonType: 3
+    host.name: 'win-74v8qgmq52i'
+  filter_machine:
+    winlog.event_data.TargetUserName.keyword|endswith: '$'
+  filter_admins:
+    TargetUserName: 'Administrator'
+  filter_system:
+    TargetUserName:
+      - 'ANONYMOUS LOGON'
+      - 'SYSTEM'
+  condition: selection and not 1 of filter_*
+falsepositives:
+  - Help desk staff with legitimate DC access
+  - Backup or monitoring service accounts not yet added to the filter
+level: high
