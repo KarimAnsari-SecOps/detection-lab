@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Detection tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Validate Sigma rules
+        # attacktag: pySigma 1.5.x compares Sigma tactic tags (lateral_movement) against
+        # STIX shortnames (lateral-movement), so every multi-word tactic is rejected.
+        # d3_fendtag: unused here, and it downloads from d3fend.mitre.org each run.
+        run: uv run sigma check --fail-on-issues -x attacktag -x d3_fendtag rules/
+
+      - name: Convert rules to Lucene
+        run: uv run sigma convert -t lucene -p ecs_windows rules/
+        
