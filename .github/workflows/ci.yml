@@ -18,7 +18,7 @@ jobs:
         env: 
           discovery.type: single-node
           xpack.security.enabled: "false"
-          ES_JAVA_OPTS: -Xms1g -Xms1g
+          ES_JAVA_OPTS: -Xms1g -Xmx1g
         ports:
           - 9200:9200
     steps:
@@ -38,11 +38,13 @@ jobs:
         # STIX shortnames (lateral-movement), so every multi-word tactic is rejected.
         # d3_fendtag: unused here, and it downloads from d3fend.mitre.org each run.
         run: uv run sigma check --fail-on-issues -x attacktag -x d3_fendtag rules/
+        
+      - name: Wait for Elasticsearch
+        run: > 
+          curl --silent --fail --retry 30 --retry-delay 3 --retry-all-errors
+          "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s"
 
       - name: Convert rules to Lucene
         run: uv run sigma convert -t lucene -p ecs_windows rules/
       
-      -name: Wait for Elasticsearch
-       run: > 
-          curl --silent --fail --retry 30 --retry-delay 3 --retry-all-errors
-          "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s"
+      
