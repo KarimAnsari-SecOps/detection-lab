@@ -42,7 +42,7 @@ jobs:
       - name: Convert rules to Lucene
         run: uv run sigma convert -t lucene -p ecs_windows rules/
       
-      -name: Wait for Elasticsearch
-       run: > 
+      - name: Wait for Elasticsearch
+        run: > 
           curl --silent --fail --retry 30 --retry-delay 3 --retry-all-errors
           "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s"
