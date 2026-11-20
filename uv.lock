@@ -130,6 +130,8 @@ source = { virtual = "." }
 dependencies = [
     { name = "pysigma" },
     { name = "pysigma-backend-elasticsearch" },
+    { name = "pyyaml" },
+    { name = "requests" },
     { name = "sigma-cli" },
 ]
 
@@ -137,6 +139,8 @@ dependencies = [
 requires-dist = [
     { name = "pysigma", specifier = ">=1.5.1" },
     { name = "pysigma-backend-elasticsearch", specifier = ">=2.1.1" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
+    { name = "requests", specifier = ">=2.34.2" },
     { name = "sigma-cli", specifier = ">=3.1.0" },
 ]
 
