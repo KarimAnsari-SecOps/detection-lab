@@ -46,5 +46,8 @@ jobs:
 
       - name: Convert rules to Lucene
         run: uv run sigma convert -t lucene -p ecs_windows rules/
+
+      - name: Replay rules against fixtures
+        run: uv run pipelines/replay.py
       
       

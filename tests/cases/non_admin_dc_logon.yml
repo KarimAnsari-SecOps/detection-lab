@@ -1,0 +1,16 @@
+# Test manifest: ties a rule to the fixtures that prove it. One file per rule.
+# Every rule under rules/ must have one, or CI fails.
+#
+#   expect: all    every event in the fixture must match the rule
+#   expect: none   no event in the fixture may match
+#   expect: <n>    exactly n events must match
+#   covers:        the filter_* block this benign fixture exists to justify (documentation;
+#                  replay.py also reports which filters have no supporting benign event)
+
+rule: rules/lateral_movement/non_admin_dc_logon.yml
+fixtures:
+  - file: tests/fixtures/attack_non_admin_dc_logon.json
+    expect: all
+  - file: tests/fixtures/benign_dc_logons.json
+    expect: none
+    covers: filter_admins
