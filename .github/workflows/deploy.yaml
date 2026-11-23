@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy detections to Kibana
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v6
+
+      - name: Join tailnet
+        uses: tailscale/github-action@v4
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      - name: Reach Kibana
+        run: curl --silent --fail --max-time 20 "$KIBANA_URL/api/status" | head -c 300
+        env:
+          KIBANA_URL: ${{ vars.KIBANA_URL }}
